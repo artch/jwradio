@@ -1,0 +1,29 @@
+.codes-generation
+    .codes-generation__info.well
+        table
+            tr
+                th Дата создания
+                td {{CodesGeneration.info.date | date:'medium'}}
+            tr
+                th Название
+                td {{CodesGeneration.info.name}}
+            tr
+                th Длительность (в днях)
+                td {{CodesGeneration.info.duration}}
+            tr
+                th Количество кодов
+                td {{CodesGeneration.info.count}}
+
+        .codes-generation__controls
+            a.btn.btn-outline-primary(ng-href="{{CodesGeneration.exportLink}}" target="_blank") Сохранить в файл
+            button.btn.btn-outline-danger(ng-click="CodesGeneration.delete()") Удалить
+
+    table
+        tr
+            th Код
+            th Использован
+            th IP-адрес
+        tr(ng-repeat="i in CodesGeneration.codes")
+            td {{i.code}}
+            td {{i.activated ? (i.activated | date:'medium') : '&mdash;'}}
+            td {{i.IP.join(', ')}}

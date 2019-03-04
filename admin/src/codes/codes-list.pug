@@ -1,0 +1,17 @@
+.codes-list
+    table(ng-if="CodesList.list.length")
+        tr
+            th Дата создания
+            th Название
+            th Длительность (в днях)
+            th Количество кодов
+        tr(ng-repeat="i in CodesList.list")
+            td {{i.date | date}}
+            td {{i.name}}
+            td {{i.duration}}
+            td
+                a(ng-href="#!/codes/generation/{{i._id}}" title="Смотреть коды")
+                    i.far.fa-list-alt
+                    | {{i.count}}
+    .codes-list__empty(ng-if="!CodesList.list.length")
+        | Не создано ни одного кода.

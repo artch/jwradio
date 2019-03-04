@@ -1,0 +1,16 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  padding-top: 5rem;
+}
+
+.view-loading {
+  text-align: center;
+  color: #999;
+  font-size: 20px;
+}
+
+@import './login/login';
+@import './codes/codes';
+@import './index/index';
+@import './settings/settings';

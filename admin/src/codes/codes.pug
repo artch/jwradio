@@ -1,0 +1,10 @@
+.codes
+    ul.nav.nav-tabs
+        li.nav-item
+            a.nav-link(ng-class="{active: ('top.codes.list' | routeSegmentEqualsTo)}" href="#!/codes") Список кодов
+        li.nav-item
+            a.nav-link(ng-class="{active: ('top.codes.check' | routeSegmentEqualsTo)}" href="#!/codes/check") Проверить код
+        li.nav-item
+            a.nav-link(ng-class="{active: ('top.codes.add' | routeSegmentEqualsTo)}" href="#!/codes/add") Создать коды
+
+    .codes__content(app-view-segment="2")

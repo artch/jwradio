@@ -1,0 +1,21 @@
+.codes-add
+    form(ng-submit="CodesAdd.submit()")
+        .form-group.row
+            label.col-sm-2 Название:
+            .col-sm-10
+                input.form-control(type="text" ng-model="CodesAdd.form.name" required autofocus)
+                small.form-text.text-muted Например, имя старейшины, который будет выдавать коды из данного списка; или имя возвещателя, для которого создается индивидуальный код.
+        .form-group.row
+            label.col-sm-2 Длительность:
+            .col-sm-10
+                input.form-control(type="number" ng-model="CodesAdd.form.duration" required)
+                small.form-text.text-muted Сколько дней код будет активен после использования. Для одноразовых кодов на одну встречу выберите "1".
+        .form-group.row
+            label.col-sm-2 Количество:
+            .col-sm-10
+                input.form-control(type="number" ng-model="CodesAdd.form.count" required)
+                small.form-text.text-muted Количество кодов, которое требуется сгенерировать.
+        .form-group.row
+            .col-sm-2
+            .col-sm-10
+                button.btn.btn-primary(type="submit") Создать

@@ -1,0 +1,23 @@
+.settings
+
+    form(ng-controller="SettingsChangePassword as SettingsChangePassword" ng-submit="SettingsChangePassword.submit()")
+        h3 Сменить пароль
+        .form-group.row
+            label.col-sm-3 Старый пароль:
+            .col-sm-9
+                input.form-control(type="password" ng-model="SettingsChangePassword.form.old" required)
+        .form-group.row
+            label.col-sm-3 Новый пароль:
+            .col-sm-9
+                input.form-control(type="password" ng-model="SettingsChangePassword.form.new" required)
+        .form-group.row
+            label.col-sm-3 Повторите новый пароль:
+            .col-sm-9
+                input.form-control(type="password" ng-model="SettingsChangePassword.form.newAgain" required)
+        .form-group.row
+            .col-sm-32
+            .col-sm-9
+                button.btn.btn-primary(type="submit") Сменить пароль
+        .form-group
+            .success(ng-if="SettingsChangePassword.success") Пароль успешно изменен
+            .error(ng-if="SettingsChangePassword.error") {{SettingsChangePassword.error}}

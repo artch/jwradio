@@ -1,0 +1,9 @@
+.container
+    form.form-signin(ng-submit="Login.submit()")
+        h2.form-signin-heading Вход администратора
+        label.sr-only(for='inputCongregation') Собрание
+        input#inputCongregation.form-control(type='' placeholder='Собрание' required='' autofocus='' ng-model="Login.login")
+        label.sr-only(for='inputPassword') Пароль
+        input#inputPassword.form-control(type='password' placeholder='Пароль' required='' ng-model="Login.password")
+        button.btn.btn-lg.btn-primary.btn-block(type='submit') Войти
+        .error(ng-if="Login.error") Ошибка входа

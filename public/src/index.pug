@@ -1,0 +1,37 @@
+doctype html
+html
+    head
+        meta(name="viewport" content="width=device-width")
+        link(rel="stylesheet" href="style.css")
+        script(type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
+        script(type="text/javascript" src="script.js")
+
+    body(onload="onload()")
+
+        .signin
+            form(onsubmit="return submitCode()")
+                label Введите код:
+                div: input(type="text" id="codeInput")
+                div: button.submit-button(type="submit") Запустить
+            #error
+
+
+        .live(style="display: none")
+            form.live__player
+                div.live__loading
+                    img.live-icon(src="loading.svg")
+                div.live__playing
+                    img.live-icon(src="radio.svg")
+                div.live__channel
+                    select.live__channel-name(onchange="changeChannel()")
+                .live__status
+                div: button(type="button" onclick="stop()") Остановить
+
+            .live__listeners
+                | Пожалуйста, укажите сколько человек слушает программу, чтобы мы могли правильно подсчитать количество присутствующих на встрече.
+                form
+                    label Слушателей:
+                    input(type="number" value="1" onchange="changeListenersCount()")
+
+        audio#audio(autoplay)
+            source#mp3-source(type="audio/mpeg" src="")

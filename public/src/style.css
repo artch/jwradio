@@ -1,0 +1,118 @@
+html {
+  height: 100%; }
+
+body {
+  font-family: arial,sans-serif;
+  height: 100%; }
+
+.signin form,
+.live__player {
+  margin: 50px auto 20px auto;
+  font-size: 20px;
+  width: 210px;
+  text-align: center;
+  padding: 20px 30px;
+  background: #eee; }
+  .signin form label,
+  .live__player label {
+    font-size: 20px;
+    color: #777; }
+  .signin form input,
+  .live__player input {
+    font-size: 40px;
+    margin-top: 10px;
+    width: 190px;
+    padding: 2px 10px; }
+  .signin form button,
+  .live__player button {
+    font-size: 20px;
+    padding: 10px 20px;
+    margin-top: 10px; }
+
+#error {
+  text-align: center;
+  color: red; }
+
+.live__player {
+  position: relative;
+  padding-left: 95px;
+  padding-right: 20px;
+  text-align: left;
+  width: 350px; }
+  .live__player label {
+    font-size: 17px; }
+  .live__player button {
+    font-size: 18px;
+    padding: 6px 10px; }
+  .live__player .live__status {
+    color: #777;
+    font-size: 13px;
+    margin: 10px 0 0 0; }
+  .live__player .live__channel-name {
+    font-size: 17px;
+    margin-top: 5px;
+    display: inline-block;
+    background: transparent;
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: 100%; }
+  .live__player a.live__channel-change {
+    font-size: 13px;
+    margin-left: 15px;
+    color: #777; }
+
+.live-icon {
+  position: absolute;
+  left: 20px;
+  top: 32px;
+  width: 50px; }
+
+.live__listeners {
+  width: 435px;
+  margin: 29px auto;
+  font-size: 13px;
+  color: #777;
+  border: 1px solid #ccc;
+  padding: 15px; }
+  .live__listeners form {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 15px;
+    color: black; }
+    .live__listeners form input {
+      width: 50px;
+      margin-left: 10px;
+      height: 30px;
+      padding: 5px 10px;
+      font-size: 18px; }
+
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0; }
+  to {
+    background-position: 0 0; } }
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0; }
+  to {
+    background-position: 0 0; } }
+
+.submit-button {
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  background-color: #55a256;
+  color: white; }
+  .submit-button[disabled] {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.25) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.25) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.25) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 75%, transparent 75%, transparent);
+    background-size: 40px 40px !important;
+    -webkit-animation: progress-bar-stripes 2s linear infinite !important;
+    -moz-animation: progress-bar-stripes 2s linear infinite !important;
+    -ms-animation: progress-bar-stripes 2s linear infinite !important;
+    -o-animation: progress-bar-stripes 2s linear infinite !important;
+    animation: progress-bar-stripes 2s linear infinite !important; }
+  .submit-button:active {
+    transform: translate(0, 1px); }

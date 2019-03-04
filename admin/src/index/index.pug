@@ -1,0 +1,59 @@
+.index
+    ul.nav.nav-tabs
+        li.nav-item
+            .nav-link.disabled Каналы:
+        li.nav-item(ng-repeat="i in Index.channels")
+            a.nav-link(href="" ng-click="Index.selectChannel(i)" ng-class="{active: i.active}") {{i.name}}
+
+    .tab-content
+        .tab-pane.fade(ng-repeat="i in Index.channels" ng-class="{show: i.active, active: i.active}")
+            .index__channel-info
+                h6 Параметры подключения
+                table
+                    tr
+                        th Адрес:
+                        td xn--80abnlydpf.xn--90ais
+                    tr
+                        th Порт:
+                        td 17188
+                    tr
+                        th Пароль:
+                        td {{Index.sourcePassword}}
+                    tr
+                        th IceCast mountpoint:
+                        td {{i.mountpoint}}
+                    tr
+                        th IceCast user:
+                        td source
+
+            .index__channel-status-false(ng-if="!i._connection")
+                i.fas.fa-exclamation-triangle
+                | Трансляция не работает
+
+            .index__channel-status-true(ng-if="i._connection")
+                i.far.fa-check-circle
+                | Трансляция работает.
+                |
+                a(ng-href="http://xn--80abnlydpf.xn--90ais:{{Index.port}}/{{i.mountpoint}}") Прямая ссылка на прослушивание
+
+            .index__channel-listeners(ng-if="i._connection")
+                div(ng-if="!i._listeners.length") Слушателей нет.
+                div(ng-if="i._listeners.length")
+                    h6 Слушатели
+                    .index__channel-listeners-total
+                        | Общее количество слушателей:
+                        strong {{Index.getTotalListeners(i)}}
+                    table
+                        tr
+                            th Код
+                            th Кол-во слушателей
+                            th IP-адрес
+                            th Подключен секунд
+                            th User Agent
+                        tr(ng-repeat="listener in i._listeners")
+                            td.alert-danger(ng-if="!listener.code") Подключение&nbsp;без&nbsp;кода!
+                            td(ng-if="listener.code") {{listener.code.code}}&nbsp;({{listener.generation.name}})
+                            td {{listener.code.listeners || 1}}
+                            td {{listener.IP[0]}}
+                            td {{listener.Connected[0]}}
+                            td {{listener.UserAgent[0]}}

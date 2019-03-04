@@ -1,0 +1,20 @@
+nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarsExampleDefault' aria-controls='navbarsExampleDefault' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+    #navbarsExampleDefault.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+            li.nav-item(ng-class="{active: ('top.index' | routeSegmentStartsWith)}")
+                a.nav-link(href='#!/') Подключение
+            li.nav-item(ng-class="{active: ('top.codes' | routeSegmentStartsWith)}")
+                a.nav-link(href='#!/codes') Доступ
+            li.nav-item(ng-class="{active: ('top.settings' | routeSegmentStartsWith)}")
+                a.nav-link(href='#!/settings') Настройки
+
+        div
+            ul.navbar-nav.mr-auto
+                li.nav-item
+                    a.nav-link {{Top.auth.name}} ({{Top.auth.login}})
+                li.nav-item
+                    button.btn.btn-secondary.my-2.my-sm-0(type='button' ng-click="Top.logout()") Выйти
+
+main.container(role='main' app-view-segment="1")

@@ -1,0 +1,30 @@
+.codes-check
+    form.form-inline(ng-submit="CodesCheck.submit()")
+        input.form-control.mr-2(type="text" ng-model="CodesCheck.code" placeholder="Введите код")
+        button.btn.btn-primary(type="submit") Проверить
+
+    .codes-check__error(ng-if="CodesCheck.error") Код не найден
+
+    .codes-check__result(ng-if="CodesCheck.result")
+        table
+            tr
+                th Код
+                td {{CodesCheck.result.code.code}}
+            tr
+                th Дата создания
+                td {{CodesCheck.result.generation.date | date:'medium'}}
+            tr
+                th Название
+                td {{CodesCheck.result.generation.name}}
+            tr
+                th Длительность (в днях)
+                td {{CodesCheck.result.generation.duration}}
+            tr
+                th Использован
+                td {{CodesCheck.result.code.activated ? (CodesCheck.result.code.activated | date:'medium') : '&mdash;'}}
+            tr
+                th IP-адрес
+                td {{CodesCheck.result.code.IP.join(', ')}}
+
+        button.btn.btn-outline-danger(ng-click="CodesCheck.delete()") Удалить код
+
