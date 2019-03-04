@@ -26,7 +26,7 @@ function submitCode() {
     var code = $('#codeInput').val();
     $('.submit-button').attr('disabled','disabled');
     $('#error').html('');
-    $.post('http://localhost:3000/check-code', {code: code}, function(e) {
+    $.post('/api/check-code', {code: code}, function(e) {
         $('.submit-button').removeAttr('disabled');
         if(!e.ok) {
             $('#error').html(e.error);
@@ -102,5 +102,5 @@ function changeChannel() {
 function changeListenersCount() {
     var listeners = $('.live__listeners input').val();
     var code = $('#codeInput').val();
-    $.post('http://localhost:3000/update-listeners-count', {code: code, listeners: listeners});
+    $.post('/api/update-listeners-count', {code: code, listeners: listeners});
 }

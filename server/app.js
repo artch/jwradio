@@ -57,8 +57,8 @@ app.options('*', cors(corsOptions));
 
 app.use(cors(corsOptions));
 
-app.use('/', require('./routes/index'));
-app.use('/auth', require('./routes/auth'));
-app.use('/admin', utils.needAuth, require('./routes/admin'));
+app.use('/api', require('./routes/index'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/admin', utils.needAuth, require('./routes/admin'));
 
 module.exports = app;
