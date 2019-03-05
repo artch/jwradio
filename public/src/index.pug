@@ -32,7 +32,7 @@ html
                 | Пожалуйста, укажите сколько человек слушает программу, чтобы мы могли правильно подсчитать количество присутствующих на встрече.
                 form
                     label Слушателей:
-                    input(type="number" value="1" onchange="changeListenersCount()")
+                    input(type="number" value="1" onchange="changeListenersCount()" min="0")
 
         audio#audio(autoplay)
             source#mp3-source(type="audio/mpeg" src="")
