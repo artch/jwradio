@@ -41,7 +41,11 @@ router.post('/check-code', utils.jsonResponse(async (request) => {
 }));
 
 router.post('/update-listeners-count', utils.jsonResponse(async (request) => {
-    await mongo.db.collection('codes').update({code: request.body.code.trim()}, {$set: {listeners: +request.body.listeners}});
+    let listeners = parseInt(request.body.listeners);
+    if (isNaN(listeners) || listeners < 0) {
+        listeners = 0;
+    }
+    await mongo.db.collection('codes').update({code: request.body.code.trim()}, {$set: {listeners: listeners}});
 }));
 
 module.exports = router;
