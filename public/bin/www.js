@@ -6,7 +6,7 @@ var express  = require('express'),
 
 var app      = express();
 
-app.use(serveStatic(path.resolve(__dirname, '../src')));
+app.use(serveStatic(path.resolve(__dirname, '../dist')));
 //app.use(express.logger('dev'));
 app.use(bodyParser());
 app.use(methodOverride());

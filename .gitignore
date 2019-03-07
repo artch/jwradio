@@ -2,3 +2,4 @@ admin/dist
 admin/src/config.js
 .idea
 node_modules
+public/dist
