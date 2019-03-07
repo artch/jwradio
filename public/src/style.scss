@@ -4,13 +4,14 @@ html {
 body {
     font-family: arial,sans-serif;
     height: 100%;
+    padding: 10px;
 }
 
 .signin form,
 .live__player {
-    margin: 50px auto 20px auto;
+    margin: 20px auto 20px auto;
     font-size: 20px;
-    width: 210px;
+    max-width: 210px;
     text-align: center;
     padding: 20px 30px;
     background: #eee;
@@ -44,7 +45,7 @@ body {
     padding-left: 95px;
     padding-right: 20px;
     text-align: left;
-    width: 350px;
+    max-width: 350px;
 
     label {
         font-size: 17px;
@@ -85,7 +86,7 @@ body {
 }
 
 .live__listeners {
-    width: 435px;
+    max-width: 435px;
     margin: 29px auto;
     font-size: 13px;
     color: #777;
@@ -94,7 +95,6 @@ body {
 
     form {
         margin-top: 15px;
-        text-align: center;
         font-size: 15px;
         color: black;
 
