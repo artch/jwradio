@@ -30,7 +30,7 @@ html
 
             .live__listeners
                 | Пожалуйста, укажите сколько человек слушает программу, чтобы мы могли правильно подсчитать количество присутствующих на встрече.
-                form
+                form(onsubmit="return false")
                     label Слушателей:
                     input(type="number" value="1" onchange="changeListenersCount()" min="0")
 
