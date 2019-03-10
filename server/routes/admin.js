@@ -22,7 +22,7 @@ router.get('/codes/list', utils.jsonResponse(async (request) => {
 }));
 
 router.get('/codes/generation', utils.jsonResponse(async (request) => {
-    var generation = await mongo.db.collection('generations').findOne({user: request.user._id, _id: mongo.ObjectId(request.query.id)})
+    var generation = await mongo.db.collection('generations').findOne({user: request.user._id, _id: mongo.ObjectId(request.query.id)});
     if(!generation) {
         return Promise.reject('invalid id');
     }
@@ -104,7 +104,7 @@ router.post('/codes/delete-generation', utils.jsonResponse(async (request) => {
 }));
 
 router.post('/codes/delete-code', utils.jsonResponse(async (request) => {
-    var code = await mongo.db.collection('codes').findOne({code: request.body.code})
+    var code = await mongo.db.collection('codes').findOne({code: request.body.code});
     if (!code) {
         return Promise.reject('invalid code');
     }
@@ -146,7 +146,7 @@ router.get('/channels', utils.jsonResponse(async (request) => {
             }
         }
         catch(e) {
-            if(e.statusCode == 400) {
+            if(e.statusCode === 400) {
                 channel._connection = false;
             }
             else {
@@ -159,7 +159,7 @@ router.get('/channels', utils.jsonResponse(async (request) => {
 }));
 
 router.post('/change-password', utils.jsonResponse(async (request) => {
-    if(request.user.password != request.body.old) {
+    if(request.user.password !== request.body.old) {
         return {invalid: 'Неверный старый пароль'};
     }
     if(request.body.new !== request.body.newAgain) {
