@@ -8,6 +8,14 @@ const requestMod = require('request-promise-native');
 const xml2js = require('xml2js');
 const util = require('util');
 
+function setExpiredFlag(codes, generation) {
+    return codes.map(function(code) {
+        code.expired = code.activated ? Date.now() > code.activated.getTime() + generation.duration * 24 * 3600 * 1000 : false;
+
+        return code;
+    });
+}
+
 router.get('/codes/list', utils.jsonResponse(async (request) => {
     var list = await mongo.db.collection('generations').find({user: request.user._id}).sort({date: -1}).toArray();
     return {list};
@@ -19,6 +27,7 @@ router.get('/codes/generation', utils.jsonResponse(async (request) => {
         return Promise.reject('invalid id');
     }
     var codes = await mongo.db.collection('codes').find({generation: generation._id}).toArray();
+    setExpiredFlag(codes, generation);
     return {info: generation, codes};
 }));
 
@@ -30,6 +39,9 @@ router.get('/codes/export', (request, response) => {
             }
             return mongo.db.collection('codes').find({generation: generation._id}).toArray()
                 .then(codes => {
+                    codes = setExpiredFlag(codes, generation).filter(function(code) {
+                        return !code.expired
+                    });
                     response.setHeader('Content-Disposition', 'attachment; filename*=UTF-8\'\''+encodeURIComponent('Коды_'+generation.name)+'.txt');
                     response.send(_.map(codes, 'code').join('\r\n'));
                 });
