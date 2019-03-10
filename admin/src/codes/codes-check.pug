@@ -6,25 +6,19 @@
     .codes-check__error(ng-if="CodesCheck.error") Код не найден
 
     .codes-check__result(ng-if="CodesCheck.result")
-        table
-            tr
-                th Код
-                td {{CodesCheck.result.code.code}}
-            tr
-                th Дата создания
-                td {{CodesCheck.result.generation.date | date:'medium'}}
-            tr
-                th Название
-                td {{CodesCheck.result.generation.name}}
-            tr
-                th Длительность (в днях)
-                td {{CodesCheck.result.generation.duration}}
-            tr
-                th Использован
-                td {{CodesCheck.result.code.activated ? (CodesCheck.result.code.activated | date:'medium') : '&mdash;'}}
-            tr
-                th IP-адрес
-                td {{CodesCheck.result.code.IP.join(', ')}}
+        dl.row
+            dt.col-md-3 Код
+            dd.col-md-9 {{CodesCheck.result.code.code}}
+            dt.col-md-3 Дата создания
+            dd.col-md-9 {{CodesCheck.result.generation.date | date:'medium'}}
+            dt.col-md-3 Название
+            dd.col-md-9 {{CodesCheck.result.generation.name}}
+            dt.col-md-3 Длительность (в днях)
+            dd.col-md-9 {{CodesCheck.result.generation.duration}}
+            dt.col-md-3 Использован
+            dd.col-md-9 {{CodesCheck.result.code.activated ? (CodesCheck.result.code.activated | date:'medium') : '&mdash;'}}
+            dt.col-md-3 IP-адрес
+            dd.col-md-9 {{CodesCheck.result.code.IP.join(', ')}}
 
         button.btn.btn-outline-danger(ng-click="CodesCheck.delete()") Удалить код
 

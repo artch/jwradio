@@ -1,17 +1,23 @@
 .codes-list
-    table(ng-if="CodesList.list.length")
-        tr
-            th Дата создания
-            th Название
-            th Длительность (в днях)
-            th Количество кодов
-        tr(ng-repeat="i in CodesList.list")
-            td {{i.date | date}}
-            td {{i.name}}
-            td {{i.duration}}
-            td
-                a(ng-href="#!/codes/generation/{{i._id}}" title="Смотреть коды")
-                    i.far.fa-list-alt
-                    | {{i.count}}
+    .table-responsive
+        table.table.table-sm.table-hover(ng-if="CodesList.list.length")
+            thead
+                tr
+                    th Дата
+                        span.d-none.d-md-inline &nbsp;создания
+                    th Название
+                    th.d-none.d-md-table-cell Длительность (в&nbsp;днях)
+                    th
+                        span.d-none.d-md-inline Количество кодов
+                        span.d-inline.d-md-none Кодов
+            tbody
+                tr(ng-repeat="i in CodesList.list")
+                    td.text-nowrap {{i.date | date}}
+                    td {{i.name}}
+                    td.d-none.d-md-table-cell {{i.duration}}
+                    td
+                        a(ng-href="#!/codes/generation/{{i._id}}" title="Смотреть коды")
+                            i.far.fa-list-alt
+                            | {{i.count}}
     .codes-list__empty(ng-if="!CodesList.list.length")
         | Не создано ни одного кода.

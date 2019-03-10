@@ -1,5 +1,5 @@
 .index
-    ul.nav.nav-tabs
+    ul.nav.nav-tabs.mb-3
         li.nav-item
             .nav-link.disabled Каналы:
         li.nav-item(ng-repeat="i in Index.channels")
@@ -7,24 +7,20 @@
 
     .tab-content
         .tab-pane.fade(ng-repeat="i in Index.channels" ng-class="{show: i.active, active: i.active}")
-            .index__channel-info
-                h6 Параметры подключения
-                table
-                    tr
-                        th Адрес:
-                        td xn--80abnlydpf.xn--90ais
-                    tr
-                        th Порт:
-                        td 17188
-                    tr
-                        th Пароль:
-                        td {{Index.sourcePassword}}
-                    tr
-                        th IceCast mountpoint:
-                        td {{i.mountpoint}}
-                    tr
-                        th IceCast user:
-                        td source
+            .index__channel-info.card
+                .card-body
+                    h6 Параметры подключения
+                    dl.row
+                        dt.col-md-3 Адрес:
+                        dd.col-md-9 xn--80abnlydpf.xn--90ais
+                        dt.col-md-3 Порт:
+                        dd.col-md-9 17188
+                        dt.col-md-3 Пароль:
+                        dd.col-md-9 {{Index.sourcePassword}}
+                        dt.col-md-3 IceCast mountpoint:
+                        dd.col-md-9 {{i.mountpoint}}
+                        dt.col-md-3 IceCast user:
+                        dd.col-md-9 source
 
             .index__channel-status-false(ng-if="!i._connection")
                 i.fas.fa-exclamation-triangle

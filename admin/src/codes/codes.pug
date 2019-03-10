@@ -1,10 +1,13 @@
 .codes
-    ul.nav.nav-tabs
+    ul.nav.nav-tabs.mb-3
         li.nav-item
-            a.nav-link(ng-class="{active: ('top.codes.list' | routeSegmentEqualsTo)}" href="#!/codes") Список кодов
+            a.nav-link(ng-class="{active: ('top.codes.list' | routeSegmentEqualsTo)}" href="#!/codes") Список
+                span.d-none.d-md-inline &nbsp;кодов
         li.nav-item
-            a.nav-link(ng-class="{active: ('top.codes.check' | routeSegmentEqualsTo)}" href="#!/codes/check") Проверить код
+            a.nav-link(ng-class="{active: ('top.codes.check' | routeSegmentEqualsTo)}" href="#!/codes/check") Проверить
+                span.d-none.d-md-inline &nbsp;код
         li.nav-item
-            a.nav-link(ng-class="{active: ('top.codes.add' | routeSegmentEqualsTo)}" href="#!/codes/add") Создать коды
+            a.nav-link(ng-class="{active: ('top.codes.add' | routeSegmentEqualsTo)}" href="#!/codes/add") Создать
+                span.d-none.d-md-inline &nbsp;коды
 
     .codes__content(app-view-segment="2")

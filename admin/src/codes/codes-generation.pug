@@ -1,29 +1,30 @@
 .codes-generation
-    .codes-generation__info.well
-        table
-            tr
-                th Дата создания
-                td {{CodesGeneration.info.date | date:'medium'}}
-            tr
-                th Название
-                td {{CodesGeneration.info.name}}
-            tr
-                th Длительность (в днях)
-                td {{CodesGeneration.info.duration}}
-            tr
-                th Количество кодов
-                td {{CodesGeneration.info.count}}
+    .codes-generation__info.card.mb-3
+        .card-body
+            dl.row
+                dt.col-md-4 Дата создания
+                dd.col-md-8 {{CodesGeneration.info.date | date:'medium'}}
+                dt.col-md-4 Название
+                dd.col-md-8 {{CodesGeneration.info.name}}
+                dt.col-md-4 Длительность (в днях)
+                dd.col-md-8 {{CodesGeneration.info.duration}}
+                dt.col-md-4 Количество кодов
+                dd.col-md-8 {{CodesGeneration.info.count}}
 
-        .codes-generation__controls
-            a.btn.btn-outline-primary(ng-href="{{CodesGeneration.exportLink}}" target="_blank") Сохранить в файл
-            button.btn.btn-outline-danger(ng-click="CodesGeneration.delete()") Удалить
+            .row
+                .col
+                    a.btn.btn-outline-primary(ng-href="{{CodesGeneration.exportLink}}" target="_blank") Сохранить в файл
+                    button.btn.btn-outline-danger(ng-click="CodesGeneration.delete()") Удалить
 
-    table
-        tr
-            th Код
-            th Использован
-            th IP-адрес
-        tr(ng-repeat="i in CodesGeneration.codes")
-            td {{i.code}}
-            td {{i.activated ? (i.activated | date:'medium') : '&mdash;'}}
-            td {{i.IP.join(', ')}}
+    .table-responsive
+        table.table.table-sm.table-hover
+            thead
+                tr
+                    th Код
+                    th Использован
+                    th IP-адрес
+            tbody
+                tr(ng-repeat="i in CodesGeneration.codes")
+                    td {{i.code}}
+                    td {{i.activated ? (i.activated | date:'medium') : '&mdash;'}}
+                    td {{i.IP.join(', ')}}
