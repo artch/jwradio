@@ -51,6 +51,12 @@ module.exports = function(grunt) {
                 files: ['src/**/*'],
                 tasks: ['default']
             }
+        },
+        bust: {
+            index: {
+                src: 'dist/index.html',
+                dest: 'dist/index.html'
+            }
         }
     });
 
@@ -60,6 +66,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-pug');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['copy', 'concat', 'pug', 'sass']);
+    grunt.registerMultiTask('bust', 'Incrementing bust', function() {
+        var now = new Date().getTime();
+        this.files.forEach(function(f) {
+            var result = grunt.file.read(f.src);
+            result = result.replace(/__BUST__/g, now);
+            grunt.file.write(f.dest, result);
+            console.log('File "'+ f.src+" processed.");
+        });
+    });
+
+    grunt.registerTask('default', ['copy', 'concat', 'pug', 'sass', 'bust']);
 
 };
