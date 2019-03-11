@@ -24,7 +24,7 @@
                     th Использован
                     th IP-адрес
             tbody
-                tr(ng-repeat="i in CodesGeneration.codes" ng-class="{'codes-generation--expired': i.expired}")
+                tr(ng-repeat="i in CodesGeneration.codes" ng-class="{'table-secondary': i.expired}")
                     td {{i.code}}
                     td
                         | {{i.activated ? (i.activated | date:'medium') : '&mdash;'}}
