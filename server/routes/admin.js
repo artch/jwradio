@@ -140,9 +140,6 @@ router.get('/channels', utils.jsonResponse(async (request) => {
                     }
                     channel._listeners.push(listener);
                 }
-                parsed.icestats.source[0].listener.forEach(listener => {
-
-                });
             }
         }
         catch(e) {

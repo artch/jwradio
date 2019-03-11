@@ -9,6 +9,10 @@
         margin-right: auto;
     }
 
+    i {
+        margin-right: 10px;
+    }
+
     &__empty {
         text-align: center;
         font-size: 20px;
@@ -29,7 +33,7 @@
     }
 
     &--expired {
-        text-decoration: line-through;
+        color: $danger !important;
     }
 }
 

@@ -1,5 +1,7 @@
 admin/dist
 admin/src/config.js
+*.html
+*.css
 .idea
 node_modules
 public/dist

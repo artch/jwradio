@@ -26,5 +26,7 @@
             tbody
                 tr(ng-repeat="i in CodesGeneration.codes" ng-class="{'codes-generation--expired': i.expired}")
                     td {{i.code}}
-                    td {{i.activated ? (i.activated | date:'medium') : '&mdash;'}}
+                    td
+                        | {{i.activated ? (i.activated | date:'medium') : '&mdash;'}}
+                        span(ng-if="i.expired") &nbsp;(истёк)
                     td {{i.IP.join(', ')}}
