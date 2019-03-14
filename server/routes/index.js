@@ -35,7 +35,7 @@ router.post('/check-code', utils.jsonResponse(async (request) => {
     return {
         channels: channels.map(i => ({
             name: i.name,
-            url: 'http://xn--80abnlydpf.xn--90ais:'+process.env.ICECAST_PORT+'/'+i.mountpoint
+            url: 'https://xn--80abnlydpf.xn--90ais:'+process.env.ICECAST_PORT+'/'+i.mountpoint
         }))
     }
 }));
