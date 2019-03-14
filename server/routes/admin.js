@@ -126,7 +126,7 @@ router.get('/channels', utils.jsonResponse(async (request) => {
         var channel = channels[i];
         channel._listeners = [];
         try {
-            let icecastBody = await requestMod('http://'+process.env.ICECAST_AUTH + '@xn--80abnlydpf.xn--90ais:'+process.env.ICECAST_PORT+'/admin/listclients?mount=/' + channel.mountpoint);
+            let icecastBody = await requestMod('http://'+process.env.ICECAST_AUTH + '@xn--80abnlydpf.xn--90ais:'+process.env.ICECAST_BROADCAST_PORT+'/admin/listclients?mount=/' + channel.mountpoint);
             let parsed = await util.promisify(xml2js.parseString)(icecastBody);
             channel._connection = true;
             if(parsed.icestats.source[0].listener) {
@@ -152,7 +152,12 @@ router.get('/channels', utils.jsonResponse(async (request) => {
         }
     }
 
-    return {channels, port: process.env.ICECAST_PORT, sourcePassword: process.env.ICECAST_SOURCE_PASSWORD};
+    return {
+        channels,
+        broadcastPort: process.env.ICECAST_BROADCAST_PORT,
+        listenerPort: process.env.ICECAST_LISTENER_PORT,
+        sourcePassword: process.env.ICECAST_SOURCE_PASSWORD
+    };
 }));
 
 router.post('/change-password', utils.jsonResponse(async (request) => {

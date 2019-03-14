@@ -13,7 +13,8 @@ mod.controller('Index', function (Api, $location) {
         .then(result => {
             this.channels = result.channels;
             result.channels[0].active = true;
-            this.port = result.port;
+            this.broadcastPort = result.broadcastPort;
+            this.listenerPort = result.listenerPort;
             this.sourcePassword = result.sourcePassword;
         });
 

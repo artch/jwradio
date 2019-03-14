@@ -14,7 +14,7 @@
                         dt.col-md-3 Адрес:
                         dd.col-md-9 xn--80abnlydpf.xn--90ais
                         dt.col-md-3 Порт:
-                        dd.col-md-9 17188
+                        dd.col-md-9 {{Index.broadcastPort}}
                         dt.col-md-3 Пароль:
                         dd.col-md-9 {{Index.sourcePassword}}
                         dt.col-md-3 IceCast mountpoint:
@@ -30,7 +30,7 @@
                 i.far.fa-check-circle
                 | Трансляция работает.
                 |
-                a(ng-href="https://xn--80abnlydpf.xn--90ais:{{Index.port}}/{{i.mountpoint}}") Прямая ссылка на прослушивание
+                a(ng-href="https://xn--80abnlydpf.xn--90ais:{{Index.listenerPort}}/{{i.mountpoint}}") Прямая ссылка на прослушивание
 
             .index__channel-listeners(ng-if="i._connection")
                 div(ng-if="!i._listeners.length") Слушателей нет.

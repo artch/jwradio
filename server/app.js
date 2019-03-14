@@ -13,8 +13,12 @@ if(!process.env.ICECAST_AUTH) {
     console.error('No ICECAST_AUTH env var configured');
     process.exit();
 }
-if(!process.env.ICECAST_PORT) {
-    console.error('No ICECAST_PORT env var configured');
+if(!process.env.ICECAST_BROADCAST_PORT) {
+    console.error('No ICECAST_BROADCAST_PORT env var configured');
+    process.exit();
+}
+if(!process.env.ICECAST_LISTENER_PORT) {
+    console.error('No ICECAST_LISTENER_PORT env var configured');
     process.exit();
 }
 if(!process.env.ICECAST_SOURCE_PASSWORD) {
