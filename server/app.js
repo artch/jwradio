@@ -53,7 +53,7 @@ app.use(passport.session());
 var corsOptions = {
     credentials: true,
     origin: function (origin, callback) {
-        callback(null, origin == process.env.CORS_WHITELIST);
+        callback(null, process.env.CORS_WHITELIST.split(',').includes(origin));
     }
 };
 
