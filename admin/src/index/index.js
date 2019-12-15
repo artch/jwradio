@@ -25,8 +25,15 @@ mod.controller('Index', function (Api, $location) {
     }
 
     this.getTotalListeners = (channel) => {
-        var sum = 0;
-        channel._listeners.forEach(i => sum += (i.code && i.code.listeners || 1));
+        var sum = 0, counted = {};
+        channel._listeners.forEach(i => {
+            var key = i.code+','+i.IP[0];
+            if(counted[key]) {
+                return;
+            }
+            counted[key] = true;
+            sum += (i.code && i.code.listeners || 1);
+        });
         return sum;
     }
 

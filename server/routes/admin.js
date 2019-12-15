@@ -132,11 +132,14 @@ router.get('/channels', utils.jsonResponse(async (request) => {
             if(parsed.icestats.source[0].listener) {
                 for(var j=0; j<parsed.icestats.source[0].listener.length; j++) {
                     var listener = parsed.icestats.source[0].listener[j];
-                    var code = await mongo.db.collection('codes').findOne({IP: listener.IP[0]});
-                    if(code) {
-                        listener.code = code;
-                        var generation = await mongo.db.collection('generations').findOne({_id: code.generation});
+                    var codes = await mongo.db.collection('codes').find({IP: listener.IP[0]}).sort({activated: -1}).toArray();
+                    if(codes.length) {
+                        listener.code = codes[0];
+                        var generation = await mongo.db.collection('generations').findOne({_id: codes[0].generation});
                         listener.generation = generation;
+                        if(typeof listener.code.listeners === 'object') {
+                            listener.code.listeners = listener.code.listeners[listener.IP[0].replace(/\./g, '_')] || 1;
+                        }
                     }
                     channel._listeners.push(listener);
                 }

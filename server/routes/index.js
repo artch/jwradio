@@ -45,7 +45,8 @@ router.post('/update-listeners-count', utils.jsonResponse(async (request) => {
     if (isNaN(listeners) || listeners < 0) {
         listeners = 0;
     }
-    await mongo.db.collection('codes').update({code: request.body.code.trim()}, {$set: {listeners: listeners}});
+    await mongo.db.collection('codes').update({code: request.body.code.trim()}, {$set: {
+        ['listeners.'+request.headers['x-forwarded-for'].replace(/\./g,'_')]: listeners}});
 }));
 
 module.exports = router;
