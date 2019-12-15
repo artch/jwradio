@@ -18,7 +18,11 @@
                         dt.col-md-3 Пароль:
                         dd.col-md-9 {{Index.sourcePassword}}
                         dt.col-md-3 IceCast mountpoint:
-                        dd.col-md-9 {{i.mountpoint}}
+                        dd.col-md-9
+                            | {{i.mountpoint}}&nbsp;&nbsp;
+                            span.badge.badge-secondary(ng-if="i.updated"
+                                ng-class="{'badge-danger': i.updated.getTime() > Index.now - 5*24*3600*1000}")
+                                | Обновлено {{i.updated | date:'dd MMM yy'}}
                         dt.col-md-3 IceCast user:
                         dd.col-md-9 source
 

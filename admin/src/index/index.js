@@ -16,6 +16,7 @@ mod.controller('Index', function (Api, $location) {
             this.broadcastPort = result.broadcastPort;
             this.listenerPort = result.listenerPort;
             this.sourcePassword = result.sourcePassword;
+            this.channels.forEach(i => i.updated && (i.updated = new Date(i.updated)));
         });
 
     this.selectChannel = (channel) => {
@@ -28,4 +29,6 @@ mod.controller('Index', function (Api, $location) {
         channel._listeners.forEach(i => sum += (i.code && i.code.listeners || 1));
         return sum;
     }
+
+    this.now = Date.now();
 });
