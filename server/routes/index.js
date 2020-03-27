@@ -33,10 +33,13 @@ router.post('/check-code', utils.jsonResponse(async (request) => {
     var user = await mongo.db.collection('users').findOne({_id: generation.user});
     var channels = await mongo.db.collection('channels').find({uid: {$in: user.channels}}).toArray();
     return {
-        channels: channels.map(i => ({
-            name: i.name,
-            url: 'https://xn--80abnlydpf.xn--90ais:'+process.env.ICECAST_LISTENER_PORT+'/'+i.mountpoint
-        }))
+        channels: user.channels.map(uid => {
+            var channel = channels.find(i => i.uid == uid);
+            return {
+                name: channel.name,
+                url: 'https://xn--80abnlydpf.xn--90ais:'+process.env.ICECAST_LISTENER_PORT+'/'+channel.mountpoint
+            };
+        })
     }
 }));
 

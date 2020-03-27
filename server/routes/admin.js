@@ -120,7 +120,8 @@ router.post('/codes/delete-code', utils.jsonResponse(async (request) => {
 }));
 
 router.get('/channels', utils.jsonResponse(async (request) => {
-    var channels = await mongo.db.collection('channels').find({uid: {$in: request.user.channels}}).toArray();
+    var channelsData = await mongo.db.collection('channels').find({uid: {$in: request.user.channels}}).toArray();
+    var channels = request.user.channels.map(uid => channelsData.find(i => i.uid == uid));
 
     for(var i=0; i<channels.length; i++) {
         var channel = channels[i];
